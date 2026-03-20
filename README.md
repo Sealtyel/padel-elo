@@ -104,6 +104,14 @@ Una gráfica de líneas con la evolución del ELO de cada jugador sesión a sesi
 
 ---
 
+## Resultados
+
+Los resultados de los partidos están registrados en el siguiente spreadsheet:
+
+[📊 Resultados Padel](https://docs.google.com/spreadsheets/d/1lnZlkSRlh7VjVhLlCfvkIZWXSgJMMqoK693xAvxxh3o/edit?gid=408319547#gid=408319547)
+
+---
+
 ## Agregar partidos
 
 Los resultados están en la variable `MATCHES_CSV` dentro del script. Cada fila sigue este formato:
