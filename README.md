@@ -110,6 +110,23 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 
 [📊 Resultados Padel](https://docs.google.com/spreadsheets/d/1lnZlkSRlh7VjVhLlCfvkIZWXSgJMMqoK693xAvxxh3o/edit?gid=408319547#gid=408319547)
 
+### Ranking actual
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Daniel | 1634 |
+| 🥈 | Densopapi | 1630 |
+| 🥉 | Moy | 1625 |
+| 4 | Alfredo | 1554 |
+| 5 | Javier | 1497 |
+| 6 | Jorge | 1480 |
+| 7 | Oscar | 1458 |
+| 8 | Pável | 1446 |
+| 9 | Guillermo | 1402 |
+| 10 | Francisco | 1274 |
+
+> Actualizado al 19/Mar/26.
+
 ---
 
 ## Agregar partidos
