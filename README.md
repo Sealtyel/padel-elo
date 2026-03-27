@@ -110,7 +110,22 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 
 [📊 Resultados Padel](https://docs.google.com/spreadsheets/d/1lnZlkSRlh7VjVhLlCfvkIZWXSgJMMqoK693xAvxxh3o/edit?gid=408319547#gid=408319547)
 
-### Ranking actual
+### 3/Mar/26
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Daniel | 1634 |
+| 🥈 | Moy | 1600 |
+| 🥉 | Densopapi | 1591 |
+| 4 | Alfredo | 1554 |
+| 5 | Javier | 1546 |
+| 6 | Oscar | 1458 |
+| 7 | Pável | 1446 |
+| 8 | Jorge | 1412 |
+| 9 | Guillermo | 1402 |
+| 10 | Francisco | 1357 |
+
+### 19/Mar/26
 
 | # | Jugador | ELO |
 |---|---------|-----|
@@ -125,7 +140,20 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 | 9 | Guillermo | 1402 |
 | 10 | Francisco | 1274 |
 
-> Actualizado al 19/Mar/26.
+### 26/Mar/26
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Densopapi | 1667 |
+| 🥈 | Moy | 1653 |
+| 🥉 | Daniel | 1634 |
+| 4 | Alfredo | 1554 |
+| 5 | Oscar | 1505 |
+| 6 | Javier | 1475 |
+| 7 | Pável | 1446 |
+| 8 | Guillermo | 1402 |
+| 9 | Jorge | 1390 |
+| 10 | Francisco | 1274 |
 
 ---
 
