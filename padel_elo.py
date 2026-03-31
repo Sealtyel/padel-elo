@@ -97,7 +97,8 @@ def process_matches():
     match_count = defaultdict(int)
     wins = defaultdict(int)
     losses = defaultdict(int)
-    history = defaultdict(list)  # historial de ELO por jugador
+    # history entry: (fecha, elo_after, partner, score_str, won, match_idx)
+    history = defaultdict(list)
 
     # Para snapshots por fecha
     wins_by_date = defaultdict(lambda: defaultdict(int))
@@ -105,11 +106,13 @@ def process_matches():
     matches_by_date = defaultdict(lambda: defaultdict(int))
     snapshots_by_date = {}  # fecha -> {player: elo}
     date_order = []  # fechas en orden de aparición
+    date_start_index = {}  # fecha -> match_idx donde empieza
 
     lines = MATCHES_CSV.strip().split("\n")
     reader = csv.DictReader(lines)
 
     prev_fecha = None
+    match_idx = 0
     for row in reader:
         team1 = parse_team(row["Equipo 1"])
         team2 = parse_team(row["Equipo 2"])
@@ -118,17 +121,15 @@ def process_matches():
 
         if fecha != prev_fecha:
             if prev_fecha is not None:
-                # Guardar snapshot al terminar la fecha anterior
                 snapshots_by_date[prev_fecha] = dict(elo)
             if fecha not in date_order:
                 date_order.append(fecha)
+                date_start_index[fecha] = match_idx
             prev_fecha = fecha
 
-        # Rating promedio de cada equipo
         avg_elo_1 = (elo[team1[0]] + elo[team1[1]]) / 2
         avg_elo_2 = (elo[team2[0]] + elo[team2[1]]) / 2
 
-        # Resultado: 1 = equipo1 gana, 0 = equipo2 gana
         if score1 > score2:
             actual_1 = 1.0
             margin_mult = compute_margin_multiplier(score1, score2)
@@ -149,28 +150,32 @@ def process_matches():
                 losses_by_date[fecha][p] += 1
 
         expected_1 = expected_score(avg_elo_1, avg_elo_2)
-
-        # Actualizar ELO de cada jugador
         delta = K_FACTOR * margin_mult * (actual_1 - expected_1)
 
         for p in team1:
             elo[p] += delta
             match_count[p] += 1
             matches_by_date[fecha][p] += 1
-            history[p].append((fecha, round(elo[p])))
+            partner = team1[1] if p == team1[0] else team1[0]
+            won = score1 > score2
+            history[p].append((fecha, round(elo[p]), partner, " & ".join(team2), score1, score2, won, match_idx))
 
         for p in team2:
             elo[p] -= delta
             match_count[p] += 1
             matches_by_date[fecha][p] += 1
-            history[p].append((fecha, round(elo[p])))
+            partner = team2[1] if p == team2[0] else team2[0]
+            won = score2 > score1
+            history[p].append((fecha, round(elo[p]), partner, " & ".join(team1), score2, score1, won, match_idx))
 
-    # Guardar snapshot de la última fecha
+        match_idx += 1
+
     if prev_fecha is not None:
         snapshots_by_date[prev_fecha] = dict(elo)
 
     return (elo, match_count, wins, losses, history,
-            snapshots_by_date, date_order, wins_by_date, losses_by_date, matches_by_date)
+            snapshots_by_date, date_order, wins_by_date, losses_by_date, matches_by_date,
+            date_start_index, match_idx)
 
 
 def print_date_ranking(fecha, snapshot, wins_date, losses_date, matches_date, prev_snapshot=None):
@@ -290,52 +295,134 @@ def print_rankings(elo, match_count, wins, losses, history,
     print()
 
 
-def plot_elo_evolution(elo, snapshots_by_date, date_order):
-    """Grafica la evolución del ELO de cada jugador por fecha de sesión."""
+def plot_elo_evolution(elo, history, date_order, date_start_index, total_matches):
+    """Grafica la evolución del ELO partido a partido con hover interactivo."""
     all_players = sorted(elo.keys())
-    x_labels = ["Inicio"] + date_order
-    x_pos = list(range(len(x_labels)))
-
-    fig, ax = plt.subplots(figsize=(12, 7))
-
     colors = plt.cm.tab10.colors
     markers = ["o", "s", "^", "D", "v", "P", "*", "X", "h", "+"]
 
+    fig, ax = plt.subplots(figsize=(14, 8))
+
+    # Líneas separadoras entre sesiones
+    for fecha in date_order:
+        x = date_start_index[fecha] - 0.5
+        if x > -0.5:
+            ax.axvline(x, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
+
+    # Etiquetas de fecha en el centro de cada sesión
+    date_list = list(date_order)
+    for k, fecha in enumerate(date_list):
+        start = date_start_index[fecha]
+        end = date_start_index[date_list[k + 1]] if k + 1 < len(date_list) else total_matches
+        mid = (start + end - 1) / 2
+        ax.text(mid, 1200, fecha.strip(), ha="center", fontsize=8, color="gray", alpha=0.8)
+
+    scatter_list = []
+    final_points = []
+
     for i, player in enumerate(all_players):
-        y_values = [INITIAL_ELO]
-        for fecha in date_order:
-            snap = snapshots_by_date.get(fecha, {})
-            y_values.append(snap.get(player, y_values[-1]))
+        color = colors[i % len(colors)]
+        marker = markers[i % len(markers)]
+        h = history[player]
 
-        ax.plot(
-            x_pos, y_values,
-            label=player,
-            color=colors[i % len(colors)],
-            marker=markers[i % len(markers)],
-            linewidth=2,
-            markersize=7,
-        )
+        x_vals = [0]
+        y_vals = [INITIAL_ELO]
+        tooltips = []
 
-        # Etiqueta al final de la línea
-        ax.annotate(
-            player,
-            xy=(x_pos[-1], y_values[-1]),
-            xytext=(5, 0),
-            textcoords="offset points",
-            va="center",
-            fontsize=8,
-            color=colors[i % len(colors)],
-        )
+        for entry in h:
+            fecha, elo_val, partner, rivals, my_score, their_score, won, midx = entry
+            x_vals.append(midx + 1)
+            y_vals.append(elo_val)
+            my_tag  = "[W]" if won else "[L]"
+            opp_tag = "[L]" if won else "[W]"
+            tooltips.append(
+                f"{my_tag}  {player} & {partner}  {my_score}\n"
+                f"{opp_tag}  {rivals}  {their_score}\n"
+                f"ELO: {elo_val}"
+            )
 
-    ax.set_xticks(x_pos)
-    ax.set_xticklabels(x_labels, fontsize=10)
+        ax.plot(x_vals, y_vals, color=color, linewidth=1.5, alpha=0.8)
+
+        sc = ax.scatter(x_vals[1:], y_vals[1:],
+                        color=color, marker=marker, s=55, zorder=5)
+        sc._player_tooltips = tooltips
+        scatter_list.append(sc)
+
+        # Guardar punto final para las etiquetas del lado derecho
+        final_points.append((y_vals[-1], x_vals[-1], player, color))
+
+    # --- Etiquetas derechas con separación anti-overlap ---
+    MIN_GAP = 18  # puntos de ELO mínimos entre etiquetas
+    final_points.sort(key=lambda t: t[0], reverse=True)
+
+    label_y = [p[0] for p in final_points]
+    # Empujar hacia abajo las etiquetas que se solapan
+    for i in range(1, len(label_y)):
+        if label_y[i - 1] - label_y[i] < MIN_GAP:
+            label_y[i] = label_y[i - 1] - MIN_GAP
+
+    x_end = max(p[1] for p in final_points)
+    x_label = x_end + 0.6
+
+    for (actual_y, x_last, player, color), adj_y in zip(final_points, label_y):
+        # Línea conectora desde el punto final a la etiqueta
+        ax.plot([x_last, x_label - 0.2], [actual_y, adj_y],
+                color=color, linewidth=0.6, alpha=0.5, clip_on=False)
+        ax.text(x_label, adj_y, f"{player}  {actual_y:.0f}",
+                va="center", fontsize=8, color=color,
+                fontweight="bold", clip_on=False)
+
+    # Ampliar el margen derecho para que quepan las etiquetas
+    ax.set_xlim(right=x_end + 1)
+
+    # Tooltip único reutilizable
+    annot = ax.annotate(
+        "", xy=(0, 0), xytext=(12, 12), textcoords="offset points",
+        bbox=dict(boxstyle="round,pad=0.4", fc="white", alpha=0.9, edgecolor="gray"),
+        fontsize=9, zorder=10,
+    )
+    annot.set_visible(False)
+
+    def on_move(event):
+        if event.inaxes != ax:
+            if annot.get_visible():
+                annot.set_visible(False)
+                fig.canvas.draw_idle()
+            return
+
+        hit_any = False
+        for sc in scatter_list:
+            cont, ind = sc.contains(event)
+            if cont:
+                idx = ind["ind"][0]
+                pos = sc.get_offsets()[idx]
+                annot.xy = pos
+                annot.set_text(sc._player_tooltips[idx])
+
+                # Ajustar offset para que no se salga del gráfico
+                x_frac = (event.xdata - ax.get_xlim()[0]) / (ax.get_xlim()[1] - ax.get_xlim()[0])
+                y_frac = (event.ydata - ax.get_ylim()[0]) / (ax.get_ylim()[1] - ax.get_ylim()[0])
+                x_off = -90 if x_frac > 0.75 else 12
+                y_off = -55 if y_frac > 0.75 else 12
+                annot.set_position((x_off, y_off))
+
+                annot.set_visible(True)
+                hit_any = True
+                break
+
+        if not hit_any and annot.get_visible():
+            annot.set_visible(False)
+
+        fig.canvas.draw_idle()
+
+    fig.canvas.mpl_connect("motion_notify_event", on_move)
+
+    ax.axhline(INITIAL_ELO, color="gray", linestyle="--", linewidth=1, alpha=0.5)
     ax.yaxis.set_minor_locator(ticker.MultipleLocator(10))
-    ax.grid(True, which="major", linestyle="--", alpha=0.5)
-    ax.grid(True, which="minor", linestyle=":", alpha=0.3)
-    ax.axhline(INITIAL_ELO, color="gray", linestyle="--", linewidth=1, alpha=0.6, label="ELO inicial (1500)")
-
-    ax.set_title("Evolución ELO por sesión · Padel", fontsize=14, fontweight="bold")
-    ax.set_xlabel("Fecha de sesión", fontsize=11)
+    ax.grid(True, which="major", linestyle="--", alpha=0.4)
+    ax.grid(True, which="minor", linestyle=":", alpha=0.2)
+    ax.set_title("Evolución ELO por partido · Padel", fontsize=14, fontweight="bold")
+    ax.set_xlabel("Partido #", fontsize=11)
     ax.set_ylabel("ELO", fontsize=11)
     ax.legend(loc="upper left", fontsize=8, framealpha=0.8)
 
@@ -347,5 +434,5 @@ def plot_elo_evolution(elo, snapshots_by_date, date_order):
 
 if __name__ == "__main__":
     results = process_matches()
-    print_rankings(*results)
-    plot_elo_evolution(results[0], results[5], results[6])
+    print_rankings(*results[:10])
+    plot_elo_evolution(results[0], results[4], results[6], results[10], results[11])
