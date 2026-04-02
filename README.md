@@ -100,7 +100,7 @@ Tabla global con ELO total, victorias, derrotas, porcentaje de victorias, partid
 
 Una gráfica de líneas con la evolución del ELO de cada jugador sesión a sesión, guardada automáticamente en el directorio del proyecto.
 
-![Ejemplo de gráfica ELO](elo_evolution.png)
+![Ejemplo de gráfica ELO](elo_evolution.png?v=2)
 
 ---
 
