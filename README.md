@@ -155,6 +155,21 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 | 9 | Jorge | 1390 |
 | 10 | Francisco | 1274 |
 
+### 1/Apr/26
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Moy | 1689 |
+| 🥈 | Daniel | 1634 |
+| 🥉 | Densopapi | 1631 |
+| 4 | Alfredo | 1554 |
+| 5 | Javier | 1510 |
+| 6 | Oscar | 1505 |
+| 7 | Pável | 1446 |
+| 8 | Guillermo | 1402 |
+| 9 | Jorge | 1355 |
+| 10 | Francisco | 1274 |
+
 ---
 
 ## Agregar partidos
