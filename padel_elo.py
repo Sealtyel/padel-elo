@@ -54,7 +54,29 @@ MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
 1 /Apr/26,1,1,Moy / Javier,Densopapi / Jorge,6 - 5
 1 /Apr/26,2,1,Moy / Javier,Densopapi / Jorge,5 - 6
 1 /Apr/26,3,1,Moy / Javier,Densopapi / Jorge,6 - 3
-1 /Apr/26,4,1,Moy / Javier,Densopapi / Jorge,3 - 1"""
+1 /Apr/26,4,1,Moy / Javier,Densopapi / Jorge,3 - 1
+17 /Apr/26,1,1,Guillermo / Daniel,Jorge / Javier,5 - 0
+17 /Apr/26,1,2,Densopapi / Igor,Oscar / Ivan,3 - 2
+17 /Apr/26,1,3,Alfredo / Roy,Manuel / Franco,2 - 3
+17 /Apr/26,2,1,Guillermo / Densopapi,Daniel / Igor,2 - 3
+17 /Apr/26,2,2,Jorge / Manuel,Javier / Franco,0 - 5
+17 /Apr/26,2,3,Francisco / Oscar,Moy / Ivan,2 - 3
+17 /Apr/26,3,1,Daniel / Franco,Igor / Javier,3 - 2
+17 /Apr/26,3,2,Guillermo / Ivan,Densopapi / Moy,0 - 5
+17 /Apr/26,3,3,Manuel / Alfredo,Jorge / Roy,4 - 1
+17 /Apr/26,4,1,Daniel / Densopapi,Franco / Moy,4 - 1
+17 /Apr/26,4,2,Igor / Manuel,Javier / Alfredo,2 - 3
+17 /Apr/26,4,3,Francisco / Ivan,Oscar / Guillermo,0 - 5
+17 /Apr/26,5,1,Daniel / Javier,Densopapi / Alfredo,3 - 2
+17 /Apr/26,5,2,Franco / Guillermo,Moy / Oscar,0 - 5
+17 /Apr/26,5,3,Manuel / Jorge,Igor / Roy,5 - 0
+17 /Apr/26,6,1,Daniel / Oscar,Javier / Moy,3 - 2
+17 /Apr/26,6,2,Densopapi / Jorge,Alfredo / Manuel,4 - 1
+17 /Apr/26,6,3,Francisco / Franco,Ivan / Guillermo,2 - 3
+17 /Apr/26,7,1,Densopapi / Oscar,Jorge / Daniel,2 - 3
+17 /Apr/26,7,2,Javier / Guillermo,Moy / Ivan,1 - 4
+17 /Apr/26,8,1,Ivan / Daniel,Moy / Oscar,2 - 3
+17 /Apr/26,8,2,Densopapi / Javier,Alfredo / Guillermo,4 - 1"""
 
 
 def normalize_name(name: str) -> str:
