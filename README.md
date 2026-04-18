@@ -176,19 +176,19 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 |---|---------|-----|
 | 🥇 | Daniel | 1761 |
 | 🥈 | Moy | 1729 |
-| 🥉 | Densopapi | 1668 |
+| 🥉 | Densopapi | 1669 |
 | 4 | Oscar | 1542 |
-| 5 | Javier | 1517 |
-| 6 | Manuel | 1503 |
-| 7 | Franco | 1501 |
-| 8 | Alfredo | 1500 |
+| 5 | Alfredo | 1525 |
+| 6 | Javier | 1518 |
+| 7 | Manuel | 1503 |
+| 8 | Franco | 1501 |
 | 9 | Ivan | 1467 |
-| 10 | Igor | 1461 |
-| 11 | Pável | 1446 |
-| 12 | Roy | 1422 |
+| 10 | Pável | 1446 |
+| 11 | Igor | 1435 |
+| 12 | Roy | 1395 |
 | 13 | Jorge | 1384 |
-| 14 | Guillermo | 1380 |
-| 15 | Francisco | 1220 |
+| 14 | Guillermo | 1379 |
+| 15 | Francisco | 1247 |
 
 ---
 

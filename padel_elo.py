@@ -75,6 +75,7 @@ MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
 17 /Apr/26,6,3,Francisco / Franco,Ivan / Guillermo,2 - 3
 17 /Apr/26,7,1,Densopapi / Oscar,Jorge / Daniel,2 - 3
 17 /Apr/26,7,2,Javier / Guillermo,Moy / Ivan,1 - 4
+17 /Apr/26,7,3,Francisco / Alfredo,Roy / Igor,3 - 2
 17 /Apr/26,8,1,Ivan / Daniel,Moy / Oscar,2 - 3
 17 /Apr/26,8,2,Densopapi / Javier,Alfredo / Guillermo,4 - 1"""
 
