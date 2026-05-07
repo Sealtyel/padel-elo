@@ -77,7 +77,25 @@ MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
 17 /Apr/26,7,2,Javier / Guillermo,Moy / Ivan,1 - 4
 17 /Apr/26,7,3,Francisco / Alfredo,Roy / Igor,3 - 2
 17 /Apr/26,8,1,Ivan / Daniel,Moy / Oscar,2 - 3
-17 /Apr/26,8,2,Densopapi / Javier,Alfredo / Guillermo,4 - 1"""
+17 /Apr/26,8,2,Densopapi / Javier,Alfredo / Guillermo,4 - 1
+28 /Apr/26,1,1,Oscar / Igor,Javier / Jorge,3 - 2
+28 /Apr/26,1,2,Alfredo / Marco,David / Manuel,4 - 1
+28 /Apr/26,1,3,Densopapi / Moy,Daniel / Alonso,1 - 4
+28 /Apr/26,2,1,Oscar / Alfredo,Igor / Marco,2 - 3
+28 /Apr/26,2,2,Daniel / Jorge,Alonso / Javier,4 - 1
+28 /Apr/26,2,3,Ivan / Manuel,Chayito / David,4 - 1
+28 /Apr/26,3,1,Igor / Jorge,Marco / Daniel,1 - 4
+28 /Apr/26,3,2,Oscar / Ivan,Alfredo / Manuel,2 - 3
+28 /Apr/26,3,3,Densopapi / Alonso,Moy / Javier,2 - 3
+28 /Apr/26,4,1,Marco / Manuel,Daniel / Alfredo,0 - 5
+28 /Apr/26,4,2,Moy / Igor,Javier / Jorge,5 - 0
+28 /Apr/26,4,3,Chayito / Ivan,David / Oscar,0 - 5
+28 /Apr/26,5,1,Daniel / Igor,Alfredo / Moy,3 - 2
+28 /Apr/26,5,2,Manuel / Ivan,Oscar / Marco,1 - 4
+28 /Apr/26,5,3,Densopapi / Jorge,Alonso / Javier,2 - 3
+28 /Apr/26,6,1,Daniel / Oscar,Igor / Marco,5 - 0
+28 /Apr/26,6,2,Alfredo / Alonso,Moy / Javier,1 - 4
+28 /Apr/26,6,3,Chayito / Manuel,David / Ivan,1 - 4"""
 
 
 def normalize_name(name: str) -> str:
@@ -85,6 +103,8 @@ def normalize_name(name: str) -> str:
     name = name.strip()
     if name == "Denso":
         name = "Densopapi"
+    if name == "Chayito":
+        name = "Francisco"
     return name
 
 
