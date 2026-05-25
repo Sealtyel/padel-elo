@@ -1,0 +1,23 @@
+{
+  "players": {
+    "Alfredo":    { "chart": true, "ranking": true },
+    "Alonso":     { "chart": false, "ranking": false },
+    "Angel":      { "chart": false, "ranking": false },
+    "Daniel":     { "chart": true, "ranking": true },
+    "David":      { "chart": false, "ranking": false },
+    "Densopapi":  { "chart": true, "ranking": true },
+    "Francisco":  { "chart": true, "ranking": true },
+    "Franco":     { "chart": true, "ranking": true },
+    "Guillermo":  { "chart": true, "ranking": true },
+    "Igor":       { "chart": true, "ranking": true },
+    "Ivan":       { "chart": true, "ranking": true },
+    "Javier":     { "chart": true, "ranking": true },
+    "Jorge":      { "chart": true, "ranking": true },
+    "Manuel":     { "chart": true, "ranking": true },
+    "Marco":      { "chart": true, "ranking": true },
+    "Moy":        { "chart": true, "ranking": true },
+    "Oscar":      { "chart": true, "ranking": true },
+    "Pável":      { "chart": false, "ranking": false },
+    "Roy":        { "chart": false, "ranking": false }
+  }
+}

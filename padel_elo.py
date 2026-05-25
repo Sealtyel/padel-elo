@@ -5,6 +5,7 @@ Soporta partidos de dobles con jugadores que no siempre asisten.
 """
 
 import csv
+import json
 import re
 from collections import defaultdict
 from datetime import datetime
@@ -14,6 +15,21 @@ import matplotlib.ticker as ticker
 # === Configuración ELO ===
 INITIAL_ELO = 1500
 K_FACTOR = 40  # K alto porque hay pocos partidos aún
+
+# === Filtros de jugadores (players.json) ===
+def load_player_config():
+    try:
+        with open("players.json") as f:
+            data = json.load(f)
+        return data.get("players", {})
+    except FileNotFoundError:
+        return {}
+
+def visible_in_chart(player, config):
+    return config.get(player, {}).get("chart", True)
+
+def visible_in_ranking(player, config):
+    return config.get(player, {}).get("ranking", True)
 
 # === Datos de partidos ===
 MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
@@ -306,8 +322,11 @@ def print_date_ranking(fecha, snapshot, wins_date, losses_date, matches_date, pr
 
 
 def print_rankings(elo, match_count, wins, losses, history,
-                   snapshots_by_date, date_order, wins_by_date, losses_by_date, matches_by_date):
+                   snapshots_by_date, date_order, wins_by_date, losses_by_date, matches_by_date,
+                   player_config=None):
     """Imprime rankings por fecha y el ranking final."""
+    if player_config is None:
+        player_config = {}
 
     # === Rankings por fecha ===
     prev_snapshot = None
@@ -327,7 +346,10 @@ def print_rankings(elo, match_count, wins, losses, history,
         prev_snapshot = snapshot
 
     # === Ranking acumulado final ===
-    ranked = sorted(elo.items(), key=lambda x: x[1], reverse=True)
+    ranked = sorted(
+        [(p, r) for p, r in elo.items() if visible_in_ranking(p, player_config)],
+        key=lambda x: x[1], reverse=True
+    )
 
     print("\n" + "=" * 70)
     print("🏆  RANKING ELO FINAL - PADEL (ACUMULADO)")
@@ -383,9 +405,11 @@ def print_rankings(elo, match_count, wins, losses, history,
     print()
 
 
-def plot_elo_evolution(elo, history, date_order, date_start_index, total_matches):
+def plot_elo_evolution(elo, history, date_order, date_start_index, total_matches, player_config=None):
     """Grafica la evolución del ELO partido a partido con hover interactivo."""
-    all_players = sorted(elo.keys())
+    if player_config is None:
+        player_config = {}
+    all_players = sorted(p for p in elo.keys() if visible_in_chart(p, player_config))
     colors = plt.cm.tab10.colors
     markers = ["o", "s", "^", "D", "v", "P", "*", "X", "h", "+"]
 
@@ -521,6 +545,7 @@ def plot_elo_evolution(elo, history, date_order, date_start_index, total_matches
 
 
 if __name__ == "__main__":
+    player_config = load_player_config()
     results = process_matches()
-    print_rankings(*results[:10])
-    plot_elo_evolution(results[0], results[4], results[6], results[10], results[11])
+    print_rankings(*results[:10], player_config=player_config)
+    plot_elo_evolution(results[0], results[4], results[6], results[10], results[11], player_config=player_config)
