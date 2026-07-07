@@ -203,7 +203,20 @@ MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
 26 /Jun/26,6,1,Ivan / Javier,Marco / Alfredo,5 - 0
 26 /Jun/26,6,2,Oscar / Chayito,Igor / Moy,0 - 5
 26 /Jun/26,7,1,Daniel / Ivan,Alfredo / Javier,3 - 2
-26 /Jun/26,8,1,Daniel / Ivan,Moy / Igor,4 - 3"""
+26 /Jun/26,8,1,Daniel / Ivan,Moy / Igor,4 - 3
+1 /Jul/26,1,1,Moy / Javier,Alfredo / Igor,3 - 2
+1 /Jul/26,1,2,Densopapi / Chayito,Jorge / Ivan,1 - 4
+1 /Jul/26,2,1,Moy / Alfredo,Javier / Manuel,3 - 2
+1 /Jul/26,2,2,Densopapi / Jorge,Chayito / Marco,4 - 1
+1 /Jul/26,3,1,Moy / Igor,Alfredo / Manuel,5 - 0
+1 /Jul/26,3,2,Densopapi / Ivan,Jorge / Marco,3 - 2
+1 /Jul/26,4,1,Moy / Manuel,Javier / Igor,4 - 1
+1 /Jul/26,4,2,Densopapi / Marco,Chayito / Ivan,4 - 1
+1 /Jul/26,5,1,Javier / Alfredo,Igor / Manuel,3 - 2
+1 /Jul/26,5,2,Chayito / Jorge,Ivan / Marco,0 - 5
+1 /Jul/26,6,2,Marco / Densopapi,Ivan / Jorge,6 - 2
+1 /Jul/26,7,1,Moy / Igor,Marco / Densopapi,6 - 3
+1 /Jul/26,7,2,Javier / Alfredo,Jorge / Ivan,4 - 6"""
 
 
 def normalize_name(name: str) -> str:
