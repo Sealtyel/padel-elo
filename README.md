@@ -100,7 +100,7 @@ Tabla global con ELO total, victorias, derrotas, porcentaje de victorias, partid
 
 Una gráfica de líneas con la evolución del ELO de cada jugador sesión a sesión, guardada automáticamente en el directorio del proyecto.
 
-![Ejemplo de gráfica ELO](elo_evolution.png?v=12)
+![Ejemplo de gráfica ELO](elo_evolution.png?v=13)
 
 ---
 
@@ -381,6 +381,26 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 | 13 | Roy | 1377 |
 | 14 | Manuel | 1199 |
 | 15 | Francisco | 1048 |
+
+### 9/Jul/26
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Daniel | 1970 |
+| 🥈 | Moy | 1880 |
+| 🥉 | Densopapi | 1807 |
+| 4 | Ivan | 1616 |
+| 5 | Oscar | 1615 |
+| 6 | Alfredo | 1499 |
+| 7 | Javier | 1494 |
+| 8 | Jorge | 1489 |
+| 9 | Marco | 1450 |
+| 10 | Franco | 1420 |
+| 11 | Igor | 1382 |
+| 12 | Guillermo | 1379 |
+| 13 | Roy | 1377 |
+| 14 | Manuel | 1224 |
+| 15 | Francisco | 988 |
 
 ---
 
