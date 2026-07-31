@@ -230,7 +230,24 @@ MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
 9 /Jul/26,6,1,Densopapi / Moy,Marco / Manuel,6 - 0
 9 /Jul/26,6,2,Javier / Ivan,Jorge / Franco,6 - 0
 9 /Jul/26,7,2,Densopapi / Moy,Javier / Ivan,6 - 2
-9 /Jul/26,8,2,Densopapi / Ivan,Jorge / Javier,6 - 2"""
+9 /Jul/26,8,2,Densopapi / Ivan,Jorge / Javier,6 - 2
+31 /Jul/26,1,1,Densopapi / Chayito,Jose / Alfredo,2 - 3
+31 /Jul/26,1,2,Moy / Ivan,Javier / Jorge,3 - 2
+31 /Jul/26,2,1,Moy / Jose,Ivan / Alfredo,1 - 4
+31 /Jul/26,2,2,Densopapi / Jorge,Chayito / Javier,4 - 1
+31 /Jul/26,3,1,Densopapi / Ivan,Jorge / Alfredo,4 - 1
+31 /Jul/26,3,2,Chayito / Moy,Javier / Jose,1 - 4
+31 /Jul/26,4,1,Densopapi / Javier,Ivan / Jose,3 - 2
+31 /Jul/26,4,2,Alfredo / Oscar,Moy / Jorge,1 - 4
+31 /Jul/26,5,1,Densopapi / Jorge,Javier / Moy,3 - 2
+31 /Jul/26,5,2,Oscar / Ivan,Chayito / Jose,5 - 0
+31 /Jul/26,6,1,Densopapi / Oscar,Jorge / Ivan,5 - 0
+31 /Jul/26,6,2,Chayito / Javier,Alfredo / Moy,1 - 4
+31 /Jul/26,7,1,Moy / Oscar,Alfredo / Densopapi,2 - 3
+31 /Jul/26,7,2,Chayito / Jose,Ivan / Javier,0 - 5
+31 /Jul/26,8,1,Javier / Alfredo,Ivan / Densopapi,1 - 4
+31 /Jul/26,8,2,Jose / Moy,Oscar / Chayito,3 - 2
+31 /Jul/26,9,1,Jose / Densopapi,Ivan / Moy,4 - 1"""
 
 
 def normalize_name(name: str) -> str:

@@ -13,6 +13,7 @@
     "Ivan":       { "chart": true, "ranking": true },
     "Javier":     { "chart": true, "ranking": true },
     "Jorge":      { "chart": true, "ranking": true },
+    "Jose":       { "chart": false, "ranking": true },
     "Manuel":     { "chart": true, "ranking": true },
     "Marco":      { "chart": true, "ranking": true },
     "Moy":        { "chart": true, "ranking": true },
