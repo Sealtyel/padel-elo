@@ -100,7 +100,7 @@ Tabla global con ELO total, victorias, derrotas, porcentaje de victorias, partid
 
 Una gráfica de líneas con la evolución del ELO de cada jugador sesión a sesión, guardada automáticamente en el directorio del proyecto.
 
-![Ejemplo de gráfica ELO](elo_evolution.png?v=16)
+![Ejemplo de gráfica ELO](elo_evolution.png?v=18)
 
 ---
 
@@ -444,6 +444,52 @@ Los resultados de los partidos están registrados en el siguiente spreadsheet:
 | 15 | Guillermo | 1379 |
 | 16 | Manuel | 1127 |
 | 17 | Francisco | 917 |
+
+### 27/Aug/26
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Densopapi | 2006 |
+| 🥈 | Daniel | 1970 |
+| 🥉 | Moy | 1771 |
+| 4 | Ivan | 1676 |
+| 5 | Javier | 1547 |
+| 6 | Arturo | 1543 |
+| 7 | Oscar | 1534 |
+| 8 | Daniel.C | 1530 |
+| 9 | Jorge | 1503 |
+| 10 | Benja | 1501 |
+| 11 | Jose | 1482 |
+| 12 | Marco | 1482 |
+| 13 | Alfredo | 1422 |
+| 14 | Franco | 1420 |
+| 15 | Igor | 1382 |
+| 16 | Guillermo | 1379 |
+| 17 | Manuel | 1127 |
+| 18 | Francisco | 917 |
+
+### 2/Sep/26
+
+| # | Jugador | ELO |
+|---|---------|-----|
+| 🥇 | Densopapi | 2048 |
+| 🥈 | Daniel | 1970 |
+| 🥉 | Moy | 1796 |
+| 4 | Ivan | 1623 |
+| 5 | Oscar | 1593 |
+| 6 | Jorge | 1567 |
+| 7 | Arturo | 1543 |
+| 8 | Benja | 1536 |
+| 9 | Daniel.C | 1530 |
+| 10 | Javier | 1503 |
+| 11 | Marco | 1462 |
+| 12 | Alfredo | 1454 |
+| 13 | Jose | 1442 |
+| 14 | Franco | 1420 |
+| 15 | Guillermo | 1379 |
+| 16 | Igor | 1312 |
+| 17 | Manuel | 1155 |
+| 18 | Francisco | 861 |
 
 ---
 

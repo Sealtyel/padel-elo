@@ -270,7 +270,42 @@ MATCHES_CSV = """Fecha,Ronda,Pista,Equipo 1,Equipo 2,Marcador
 6 /Aug/26,9,3,Daniel.C / Chayito,Jose / Manuel,4 - 1
 6 /Aug/26,10,1,Densopapi / Jorge,Javier / Moy,3 - 2
 6 /Aug/26,10,2,Ivan / Chayito,Arturo / Daniel.C,0 - 5
-6 /Aug/26,10,3,Jose / Oscar,Manuel / Marco,5 - 0"""
+6 /Aug/26,10,3,Jose / Oscar,Manuel / Marco,5 - 0
+27 /Aug/26,1,1,Alfredo / Alonso,Javier / Oscar,1 - 4
+27 /Aug/26,1,2,Ivan / Moy,Densopapi / Benja,2 - 3
+27 /Aug/26,2,1,Javier / Densopapi,Oscar / Benja,4 - 1
+27 /Aug/26,2,2,Alfredo / Ivan,Moy / Alonso,1 - 4
+27 /Aug/26,3,1,Javier / Alonso,Densopapi / Moy,1 - 4
+27 /Aug/26,3,2,Alfredo / Oscar,Ivan / Benja,2 - 3
+27 /Aug/26,4,1,Densopapi / Ivan,Moy / Benja,4 - 1
+27 /Aug/26,4,2,Alfredo / Javier,Oscar / Alonso,0 - 5
+27 /Aug/26,5,1,Densopapi / Oscar,Ivan / Alonso,1 - 4
+27 /Aug/26,5,2,Alfredo / Benja,Javier / Moy,1 - 4
+27 /Aug/26,6,1,Ivan / Javier,Alonso / Moy,3 - 2
+27 /Aug/26,6,2,Densopapi / Alfredo,Oscar / Benja,3 - 2
+27 /Aug/26,7,1,Ivan / Alfredo,Javier / Densopapi,0 - 4
+27 /Aug/26,7,2,Oscar / Alonso,Benja / Moy,2 - 2
+2 /Sep/26,1,1,Densopapi / Javier,Moy / Ivan,4 - 1
+2 /Sep/26,1,2,Jorge / Marco,Jose / Alfredo,4 - 1
+2 /Sep/26,1,3,Manuel / Benja,Igor / Chayito,3 - 2
+2 /Sep/26,2,1,Densopapi / Marco,Javier / Jorge,4 - 1
+2 /Sep/26,2,2,Moy / Manuel,Ivan / Benja,1 - 4
+2 /Sep/26,2,3,Chayito / Jose,Igor / Alfredo,0 - 5
+2 /Sep/26,3,1,Densopapi / Ivan,Marco / Benja,5 - 0
+2 /Sep/26,3,2,Javier / Igor,Jorge / Alfredo,2 - 3
+2 /Sep/26,3,3,Moy / Jose,Manuel / Chayito,4 - 1
+2 /Sep/26,4,1,Densopapi / Alfredo,Ivan / Jorge,3 - 2
+2 /Sep/26,4,2,Marco / Jose,Moy / Benja,1 - 4
+2 /Sep/26,4,3,Chayito / Javier,Manuel / Igor,1 - 4
+2 /Sep/26,5,1,Densopapi / Moy,Alfredo / Benja,4 - 1
+2 /Sep/26,5,2,Ivan / Igor,Jorge / Manuel,1 - 4
+2 /Sep/26,5,3,Oscar / Marco,Javier / Jose,3 - 2
+2 /Sep/26,6,1,Densopapi / Manuel,Moy / Jorge,1 - 4
+2 /Sep/26,6,2,Oscar / Benja,Marco / Alfredo,4 - 1
+2 /Sep/26,6,3,Chayito / Igor,Javier / Ivan,0 - 5
+2 /Sep/26,7,1,Moy / Oscar,Jorge / Benja,4 - 1
+2 /Sep/26,7,2,Javier / Densopapi,Ivan / Manuel,5 - 0
+2 /Sep/26,7,3,Igor / Marco,Jose / Alfredo,0 - 5"""
 
 
 def normalize_name(name: str) -> str:
